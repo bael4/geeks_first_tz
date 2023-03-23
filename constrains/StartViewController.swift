@@ -102,6 +102,7 @@ class StartViewController: UIViewController {
                  view.addSubview(box)
              }
         constraint()
+        initAction()
     }
 
     
@@ -152,6 +153,33 @@ class StartViewController: UIViewController {
     }
   
     
+    private func initAction(){
+        loginButton.addTarget(self, action: #selector(loginButton(_ :)), for: .touchUpInside)
+    }
+    
+    @objc func loginButton(_ sender: UIButton){
+        
+        let nameCount = nameTextField.text?.count
+        let passwordCount =  nameTextField2.text?.count
+
+
+
+        if nameCount! == 0 || nameCount! < 3 {
+          nameTextField.layer.borderWidth = 2
+            nameTextField.layer.borderColor = UIColor.red.cgColor
+         nameTextField.placeholder =  "пользователь не найден"
+        }else{
+           nameTextField.layer.borderColor = UIColor.clear.cgColor
+        }
+
+        if passwordCount! == 0 || passwordCount! < 8 {
+            nameTextField2.layer.borderWidth = 2
+              nameTextField2.layer.borderColor = UIColor.red.cgColor
+           nameTextField2.placeholder =  "пользователь не найден"
+        }else{
+            nameTextField2.layer.borderColor = UIColor.clear.cgColor
+        }
+    }
     
 }
 
